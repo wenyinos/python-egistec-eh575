@@ -174,7 +174,22 @@ sudo rm -rf /var/lib/open-fprintd       # 模板与校准数据（确认无需�
 sudo systemctl start fprintd    # 系统 fprintd 按需激活（D-Bus activatable）
 ```
 
-### 步骤 8：卸载 Python 依赖（可选）
+### 步骤 8：终止手动调试残留进程（如有）
+
+部署/调试期间若以 `--debug` 方式手动运行过 `open-fprintd`/`egis-bridge`
+（进程挂在用户会话 systemd 下，非服务单元管理，`systemctl stop` 无法终止），
+即使服务已卸载，进程仍会持有 `net.reactivated.Fprint` D-Bus 名字，导致
+`fprintd-list` 仍报告设备（`Client must claim device first`）。需手动清理：
+
+```bash
+ps aux | grep -E 'bin/open-fprintd|bin/egis-bridge' | grep -v grep
+sudo kill <PID>
+```
+
+> 经验：回滚验证若发现 `net.reactivated.Fprint` 的持有单元是 `session-*.scope`
+> 而非 service 单元，即为手动残留进程，按本步骤清理。
+
+### 步骤 9：卸载 Python 依赖（可选）
 
 仅当确认这些包无其他用途：
 
