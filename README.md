@@ -129,8 +129,9 @@ see [Release Procedure](docs/releasing.md).
 | GLib | `python-gobject` | `python3-gobject` |
 
 Python 3.12 or newer is required. The package metadata sets no upper version
-bound, so newer interpreters install without a version pin; only 3.12-3.14 are
-exercised in CI, so treat anything newer as unverified until the matrix covers it.
+bound, so newer interpreters install without a version pin. CI covers 3.12-3.15;
+3.15 is non-blocking until scikit-image ships a stable cp315 wheel, so treat
+anything newer than 3.15 as unverified.
 
 Install on Arch:
 ```bash
@@ -252,11 +253,11 @@ Run the complete nonprivileged repository check with:
 ./tools/check
 ```
 
-CI exercises Python 3.12-3.14, the D-Bus contract, privacy guards, deterministic
-source archives, and Arch/Fedora package builds. Hardware and desktop lifecycle
-behavior cannot be proven in CI. Use `egis-doctor` and the sanitized compatibility
-workflow in [Compatibility Validation](docs/compatibility.md) to contribute
-evidence without publishing biometric data.
+CI exercises Python 3.12-3.15 (3.15 non-blocking), the D-Bus contract, privacy
+guards, deterministic source archives, and Arch/Fedora package builds. Hardware
+and desktop lifecycle behavior cannot be proven in CI. Use `egis-doctor` and the
+sanitized compatibility workflow in [Compatibility Validation](docs/compatibility.md)
+to contribute evidence without publishing biometric data.
 
 ## Debugging
 

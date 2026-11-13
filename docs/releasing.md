@@ -16,11 +16,13 @@ installer preflight, rejects tracked private/generated data, and runs the test
 suite. The release builder refuses a dirty tracked tree by default and records
 the source commit and vendored manager tree in `release-manifest.json`.
 
-CI must pass on Python 3.12, 3.13, and 3.14. It also builds the rendered Arch
+CI must pass on Python 3.12, 3.13, and 3.14. Python 3.15 runs in the same matrix
+as a non-blocking `experimental` entry and becomes a required gate once
+scikit-image publishes a stable cp315 wheel. CI also builds the rendered Arch
 package and Fedora RPM from the generated source archive. Package success is not
 hardware evidence.
 
-`requires-python` carries no upper bound, so an interpreter newer than 3.14
+`requires-python` carries no upper bound, so an interpreter newer than 3.15
 installs without CI evidence. Treat such a version as unverified until the CI
 matrix is extended to cover it.
 
