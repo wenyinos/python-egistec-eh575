@@ -7,7 +7,7 @@ name = "open-fprintd-eh575"
 dynamic = ["version"]
 description = "EgisTec EH575 fingerprint driver and open-fprintd backend"
 readme = "README.md"
-requires-python = ">=3.12,<3.15"
+requires-python = ">=3.12"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [{name = "Sandro Roque"}]

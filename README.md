@@ -120,13 +120,17 @@ see [Release Procedure](docs/releasing.md).
 
 | Package | Arch | Fedora |
 |---------|------|--------|
-| Python 3 | `python` | `python3` |
+| Python 3.12+ | `python` | `python3` |
 | OpenCV | `python-opencv` | `python3-opencv` |
 | NumPy | `python-numpy` | `python3-numpy` |
 | scikit-image | `python-scikit-image` | `python3-scikit-image` |
 | PyUSB | `python-pyusb` | `python3-pyusb` |
 | D-Bus | `python-dbus` | `python3-dbus` |
 | GLib | `python-gobject` | `python3-gobject` |
+
+Python 3.12 or newer is required. The package metadata sets no upper version
+bound, so newer interpreters install without a version pin; only 3.12-3.14 are
+exercised in CI, so treat anything newer as unverified until the matrix covers it.
 
 Install on Arch:
 ```bash

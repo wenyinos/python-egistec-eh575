@@ -20,6 +20,10 @@ CI must pass on Python 3.12, 3.13, and 3.14. It also builds the rendered Arch
 package and Fedora RPM from the generated source archive. Package success is not
 hardware evidence.
 
+`requires-python` carries no upper bound, so an interpreter newer than 3.14
+installs without CI evidence. Treat such a version as unverified until the CI
+matrix is extended to cover it.
+
 ## Hardware Release Gate
 
 Before tagging:
